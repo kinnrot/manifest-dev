@@ -28,6 +28,8 @@ If no arguments provided, ask: "What would you like to build or change?"
 
 ## Domain Guidance
 
+Domain-specific guidance available in:
+
 | Domain | Indicators | Guidance File |
 |--------|------------|---------------|
 | **Coding** | Any code change (base for Feature, Bug, Refactor) | `tasks/CODING.md` |
@@ -69,11 +71,11 @@ Scope deliverables and verification to repo context. Cross-repo invariants get e
 
 5. **Directed** - For complex tasks, establish validated implementation direction (Approach) before execution. Architecture defines direction, not step-by-step script. Trade-offs enable autonomous adjustment.
 
-6. **Efficient** - Comprehensive coverage is the goal—long interviews are fine if questions earn their place. Efficient means **question quality**: each question should maximally reduce uncertainty, split the decision space, or surface constraints. It does NOT mean brevity or minimizing questions. Every question must pass a quality gate: it **materially changes the manifest**, **locks an assumption**, or **chooses between meaningful trade-offs**. If a question fails all three, don't ask it. One missed criterion costs more than one extra question—err toward asking, but never ask trivia. Prioritize questions that split the space—scope and constraints before details.
+6. **Efficient** - Question quality, not brevity. Each question must: materially change the manifest, lock an assumption, or choose between meaningful trade-offs. If it fails all three, don't ask. One missed criterion costs more than one extra question—err toward asking, never ask trivia. Prioritize questions that split the space—scope and constraints before details.
 
 ## Constraints
 
-**All questions use AskUserQuestion** - Never output questions as plain text. Every user question goes through AskUserQuestion with 2-4 options, one marked "(Recommended)".
+**All questions use AskUserQuestion** - Every user question goes through AskUserQuestion with options (2-4 per tool limit), one marked "(Recommended)".
 
 **Task files supplement probing** - Task files add domain-specific risks and trade-offs as prompts—angles you might not think to check. They don't constrain what to ask; probing adapts to the specific task.
 
@@ -99,7 +101,7 @@ Scope deliverables and verification to repo context. Cross-repo invariants get e
 
 **Stop when converged** - Err on more probing. Convergence requires: pre-mortem scenarios logged with dispositions (see Pre-Mortem Protocol), domain understood, edge cases probed, and no obvious areas left unexplored. Only then, if very confident further questions would yield nothing new, move to synthesis. Remaining low-impact unknowns that don't warrant further probing are recorded as Known Assumptions in the manifest. User can signal "enough" to override.
 
-**Verify before finalizing** - After writing manifest, verify completeness using the manifest-verifier agent with the manifest and discovery log as input. If status is CONTINUE, ask the outputted questions, log new answers, update manifest, re-verify. Loop until COMPLETE or user signals "enough".
+**Verify before finalizing** - After writing manifest, invoke manifest-verifier with the manifest and discovery log. If status is CONTINUE, ask the outputted questions, log new answers, update manifest, re-verify. Loop until COMPLETE or user signals "enough".
 
 **Insights become criteria** - Outside view findings, pre-mortem risks, non-obvious discoveries → convert to INV-G* or AC-*. Don't include insights that aren't encoded as criteria.
 
