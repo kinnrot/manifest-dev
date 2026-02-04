@@ -45,6 +45,8 @@ Domain-specific guidance available in:
 
 **Task files are supplementary, not exhaustive**. Probing is adaptive—driven by the specific task, user responses, and what you discover. Task files add angles you might not think to check; they don't replace judgment about what matters for this task.
 
+**Actionable structures in task files** - When task files contain tables or checklists (e.g., quality gates, review criteria), present them to the user for selection early in probing. These are structural decisions—deciding late causes rework.
+
 ## Existing Manifest Feedback
 
 If input references a previous manifest: **treat it as source of truth**. It contains validated decisions — default to building on it, preserving what's settled. Confirm approach with user if unclear.
