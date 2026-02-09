@@ -14,9 +14,10 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 
 **Intellectual Rigor**
 - **Counterfactual stress-testing** — Key claims tested against disconfirming evidence — "what would make this wrong?" actively investigated, not just acknowledged. Conclusions that survive: stated with confidence. Conclusions that are fragile: flagged with the conditions under which they break
-- **Opposing evidence** — Research actively sought and fairly represented viewpoints opposing its conclusions; absence of opposing evidence is itself a finding to explain
+- **Opposing evidence & steelmanning** — Research actively sought viewpoints opposing its conclusions. For each key conclusion, the strongest possible counter-argument is constructed (steelman) and engaged with directly — not a weak summary dismissed easily. Absence of opposing evidence is itself a finding to explain
 - **Multi-angle investigation** — Research question examined from multiple independent frames (different stakeholder perspectives, time horizons, assumption sets, disciplines) — not just multiple sources within the same frame
 - **Investigation depth** — Key claims investigated beyond the first satisfying source; exploration paths documented showing adjacent and deeper threads were evaluated before concluding; depth means multiple independent lines of evidence, not just source count
+- **Argument chain integrity** — Every conclusion walkable from raw evidence through intermediate claims to final recommendation. Each inferential step identified (deduction, induction, analogy, authority). Gaps or unsupported leaps in the chain are flagged
 
 **Consistency & Transparency**
 - **Internal consistency** — Findings, analysis, and conclusions don't contradict each other; no claim in one section undermined by evidence in another. Report audited for contradictions between sections, between evidence and conclusions, and between different claims
@@ -66,6 +67,7 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 - **Second-order blindness** - recommendations evaluated in isolation without downstream consequences; probe: if we follow this recommendation, what else changes?
 - **Single-frame blindness** - entire investigation conducted through one lens (e.g., only technical, only economic); probe: what frames haven't been applied? Would a different stakeholder see this differently?
 - **Shallow depth masquerading as breadth** - many sources cited but no claim investigated deeply; probe: for the most important claim, can you trace the full chain of evidence from raw source to conclusion?
+- **Survivorship bias** - only successful cases visible; failed adoptions, quiet abandonments, and "we tried X and it didn't work" are undocumented; probe: what would the failures look like? Are we only seeing winners?
 
 ## Scenario Prompts
 
@@ -86,7 +88,6 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 - **Correlation treated as causation** - "teams using X ship faster" presented as "X makes teams ship faster" without examining confounds; probe: is this a causal claim or an observed correlation, and what alternative explanations exist?
 - **Recommendation risk unexamined** - recommended option's failure modes, reversal cost, and downside scenarios not analyzed; probe: what happens if we follow this recommendation and it doesn't work out? How hard is it to reverse?
 - **Tangential threads unexplored** - adjacent questions surfaced during research but not followed; probe: what related questions did this research raise that aren't answered? Would exploring them change the conclusions?
-- **Argument chain broken** - logical steps from evidence to conclusion contain gaps or unsupported leaps; probe: walk the chain from raw evidence to final recommendation — where are the weakest links?
 
 ## Trade-offs
 
