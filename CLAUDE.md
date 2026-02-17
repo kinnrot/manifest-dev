@@ -140,7 +140,12 @@ Task files provide domain-specific probing guidance for `/define`. They live in 
 
 **Required sections**: Quality Gates (table with Agent + Threshold), Risks (bullet list with probes), Scenario Prompts (bullet list with probes), Trade-offs (bullet list). Optional additions: Context to Discover, Anti-Patterns.
 
-**Self-contained**: Task files encode all domain knowledge inline. The consumer is `/define`'s interview process, not the user. Content should be probing fuel (angles to check) not execution instructions (how to do the work).
+**Content types**: Task files contain three categories:
+- *Resolvable* (tables/checklists: quality gates, risks, scenarios, trade-offs) — resolved by `/define` via the interview.
+- *Compressed awareness* (bold-labeled one-line domain summaries) — informs probing without requiring resolution.
+- *Reference files* (`references/*.md`) — detailed lookup data for `/verify` agents. Not loaded during `/define`.
+
+**Probing fuel, not execution instructions**: The consumer is `/define`'s interview process. Content should be angles to check, not instructions for how to do the work. Full reference material belongs in `references/`, not in the task file.
 
 **When creating/modifying task files**:
 1. Read existing task files for structural patterns (PROMPTING.md is the richest example)
