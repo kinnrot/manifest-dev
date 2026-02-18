@@ -32,6 +32,8 @@ Manifest-driven workflows separating **what to build** (Deliverables) from **rul
 
 **Hooks** prevent premature stopping -- can't stop without verification passing or proper escalation.
 
+**Task guidance** with domain-specific quality gates, risks, and scenarios. Reference material in `tasks/references/research/` provides detailed evidence for `/verify` agents.
+
 ## Contributing
 
 Each plugin lives in its own directory. See [CLAUDE.md](../CLAUDE.md) for development commands and plugin structure.

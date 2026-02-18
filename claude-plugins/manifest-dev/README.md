@@ -87,7 +87,7 @@ A structured approach to task definition and execution:
 
 The universal flow (core principles, manifest schema) works without any task file.
 
-Task files use compressed domain awareness for probing; full reference material lives in `skills/define/references/` for verification fallback when domain-specific agents are unavailable.
+Task files use compressed domain awareness for probing; full reference material lives in `skills/define/tasks/references/` for `/verify` agents (e.g., `references/research/` contains meta-research evidence across 7 disciplines).
 
 ### Internal
 
