@@ -39,17 +39,17 @@ Domain-specific guidance available in:
 | **Prompting** | LLM prompts, skills, agents, system instructions | `tasks/PROMPTING.md` |
 | **Writing** | Prose, articles, emails, marketing copy, social media, creative writing (base for Blog, Document) | `tasks/WRITING.md` |
 | **Document** | Specs, proposals, reports, formal docs (base: Writing) | `tasks/DOCUMENT.md` |
-| **Research** | Investigations, analyses, comparisons | `tasks/RESEARCH.md` |
+| **Research** | Investigations, analyses, comparisons | `tasks/research/RESEARCH.md` |
 | **Blog** | Blog posts, articles, tutorials (base: Writing) | `tasks/BLOG.md` |
 
-**Composition**: Code-change tasks combine CODING.md (base quality gates) with domain-specific guidance. Text-authoring tasks combine WRITING.md (base prose quality) with content-type guidance—a "blog post" benefits from both WRITING.md and BLOG.md, a "technical proposal" from both WRITING.md and DOCUMENT.md. Domains aren't mutually exclusive—a "bug fix that requires refactoring" benefits from both BUG.md and REFACTOR.md. Related domains compound coverage.
+**Composition**: Code-change tasks combine CODING.md (base quality gates) with domain-specific guidance. Text-authoring tasks combine WRITING.md (base prose quality) with content-type guidance—a "blog post" benefits from both WRITING.md and BLOG.md, a "technical proposal" from both WRITING.md and DOCUMENT.md. Research tasks compose RESEARCH.md (base research methodology) with source-type files—when web research is identified as relevant, load `tasks/research/sources/SOURCE_WEB.md` alongside `tasks/research/RESEARCH.md`. RESEARCH.md's Data Sources table lists available source files and probes which sources apply. Domains aren't mutually exclusive—a "bug fix that requires refactoring" benefits from both BUG.md and REFACTOR.md. Related domains compound coverage.
 
 **Task file structures are presumed relevant.** Task files contain quality gates, reviewer agents, risks, scenarios, and trade-offs. These are angles you won't think to check on your own — they exist precisely because they're easy to miss. Every table and checklist in applicable task files must be **resolved**: either presented to the user for selection, or explicitly skipped with logged reasoning (e.g., "CODING.md testability gate skipped: task is prompt-only, no code changes"). Silent drops are the failure mode — not over-asking.
 
 **Task file content types.** Four categories, each handled differently:
 - **Resolvable** (tables/checklists: quality gates, risks, scenarios, trade-offs) — resolve via interview, encode as INV/AC or explicitly skip.
 - **Compressed awareness** (bold-labeled one-line domain summaries, not tables/checklists) — informs your probing; no resolution needed.
-- **Process guidance hints** (counter-instinctive practices labeled as PG candidates) — practices LLMs would get wrong without explicit guidance. Present applicable hints as a batch after scenarios; selected items become PG-* in the manifest.
+- **Process guidance hints** (counter-instinctive practices) — practices LLMs would get wrong without explicit guidance. Two modes: **candidates** (labeled as PG candidates, presented as batch after scenarios, user selects) and **defaults** (`## Defaults` section, included in manifest without probing, user reviews manifest and removes if not applicable). Both become PG-* in the manifest.
 - **Reference files** (`references/*.md`) — detailed lookup data for `/verify` agents. Do not load during the interview.
 
 Probing beyond task files is adaptive — driven by the specific task, user responses, and what you discover. Task files don't cap what to ask; they set a floor.

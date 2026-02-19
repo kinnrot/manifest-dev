@@ -22,6 +22,7 @@ AI text is measurably more predictable, less varied, and narrower in vocabulary 
 | Accuracy | general-purpose | — | Claims supported, no contradictions |
 | Audience fit | general-purpose | — | Language and depth match target reader |
 | Clarity | general-purpose | — | No ambiguous terms or undefined jargon |
+| Statistical variation | general-purpose | — | Sentence-length variation and vocabulary diversity present; uniform rhythm is an AI tell |
 
 Writing-reviewer severity: CRITICAL = immediately identifiable as AI. HIGH = experienced readers would notice. MEDIUM/LOW = informational only.
 
@@ -63,27 +64,21 @@ Writer substance is ~70% of output quality; editing ~20%; prompting ~10%. No amo
 ## Risks
 
 - **Hollow output** — content passes review but lacks writer's genuine substance; probe: was the 70% (writer input) actually provided?
-- **AI slop surviving editing** — kill-list words replaced but structural/tonal patterns remain; probe: checked beyond vocabulary?
 - **Wrong depth** — too technical or too shallow for readers; probe: what does audience already know?
 - **Disembodied voice** — lacks specific experiences, opinions, data; probe: check for AUTHOR_VOICE.md?
 - **Wrong audience** — language and depth don't match reader; probe: who reads this, what do they know?
-- **Statistical uniformity** — text has low burstiness, uniform sentence length, predictable vocabulary despite clean review; probe: does it feel alive or smoothly flat?
 
 ## Scenario Prompts
 
-- **AI tells despite editing** — vocabulary cleaned but structural/rhetorical/tonal patterns untouched; probe: has four-layer editing been applied, not just word replacement?
 - **Hollow output without substance** — polished prose, no actual insight or lived experience; probe: what writer-specific substance went in before generation?
 - **Voice inconsistency** — tone shifts between sections, or doesn't match AUTHOR_VOICE.md; probe: consistent voice throughout? voice doc consulted?
-- **Kill-list vocabulary surviving review** — kill-list words missed in editing; probe: full kill-list cross-checked?
 - **Tone mismatch** — doesn't sound like author/brand; probe: check AUTHOR_VOICE.md? brand guidelines?
-- **Factual error damages trust** — one wrong claim undermines all; probe: claims verified?
 - **Missing credibility signal** — no reason to trust author; probe: what authority/experience backs this?
 - **Wrong reader assumptions** — assumes knowledge reader lacks; probe: what does audience know?
 - **Missing prerequisites** — assumes knowledge reader doesn't have; probe: what must reader know first?
 - **Missing examples** — abstract explanation, no concrete cases; probe: would examples help?
 - **Buried critical info** — important details hidden in middle; probe: what must reader not miss?
 - **Relentless positivity kills credibility** — everything framed as great; no honest assessment; probe: are weaknesses acknowledged?
-- **Em-dash density** — prose littered with em-dashes (top AI tell); probe: em-dashes banned?
 - **Perspective collapse** — writing aggregates so many views it has none; probe: does the author take a position?
 
 ## Trade-offs
@@ -94,3 +89,10 @@ Writer substance is ~70% of output quality; editing ~20%; prompting ~10%. No amo
 - Polished vs authentic (imperfection signals humanity)
 - Specific vs broadly applicable
 - Voice consistency vs tonal variation
+
+## Defaults
+
+*Domain best practices for this task type.*
+
+- **Four-layer editing** — Edit beyond vocabulary: word-level (kill-list), sentence-level (structure), paragraph-level (rhetoric/tone), content-level (substance). Never just word replacement
+- **Kill-list cross-check** — Full vocabulary kill-list applied to output

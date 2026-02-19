@@ -134,22 +134,28 @@ When adding agents, skills, or hooks:
 
 ### Task Files for /define
 
-Task files provide domain-specific probing guidance for `/define`. They live in `skills/define/tasks/` and follow a composition model:
+Task files provide domain-specific hints for `/define`. They live in `skills/define/tasks/` and follow a composition model:
 
-**Base files** provide universal quality gates for a domain (e.g., `CODING.md` for code, `WRITING.md` for prose). **Overlay files** add content-type specificity on top (e.g., `BLOG.md` composes with `WRITING.md`, `FEATURE.md` composes with `CODING.md`).
+**Base files** provide universal quality gates for a domain (e.g., `CODING.md` for code, `WRITING.md` for prose). **Overlay files** add content-type specificity on top (e.g., `BLOG.md` composes with `WRITING.md`, `FEATURE.md` composes with `CODING.md`). **Research** composes `tasks/research/RESEARCH.md` with source-type files in `tasks/research/sources/`.
 
-**Required sections**: Quality Gates (table with Agent + Threshold), Risks (bullet list with probes), Scenario Prompts (bullet list with probes), Trade-offs (bullet list). Optional additions: Context to Discover, Anti-Patterns.
+**Required sections**: Quality Gates (table with Agent + Threshold), Risks (bullet list with probes), Scenario Prompts (bullet list with probes), Trade-offs (bullet list). Optional additions: Context to Discover, Anti-Patterns, Defaults.
 
 **Content types**: Task files contain four categories:
 - *Resolvable* (tables/checklists: quality gates, risks, scenarios, trade-offs) — resolved by `/define` via the interview.
 - *Compressed awareness* (bold-labeled one-line domain summaries) — informs probing without requiring resolution.
-- *Process guidance hints* (counter-instinctive practices labeled as PG candidates) — practices LLMs would get wrong without explicit guidance. Presented as batch during `/define`; selected items become PG-* in the manifest.
+- *Process guidance hints* (counter-instinctive practices) — Two modes: **candidates** (labeled as PG candidates, presented as batch, user selects) and **defaults** (`## Defaults` section, included in manifest without probing, user reviews manifest). Both become PG-* in the manifest.
 - *Reference files* (`references/*.md`) — detailed lookup data for `/verify` agents. Not loaded during `/define`.
 
-**Probing fuel, not execution instructions**: The consumer is `/define`'s interview process. Content should be angles to check, not instructions for how to do the work. Full reference material belongs in `references/`, not in the task file.
+**Probing fuel, not execution instructions**: The consumer is `/define`'s interview process. Content should be angles to check, not instructions for how to do the work. Task files provide domain knowledge; SKILL.md defines how `/define` uses it. Don't prescribe manifest encoding (PG vs INV vs AC) in task files — that's `/define`'s job.
+
+**Item placement test** — each item belongs in exactly one content type:
+- *"Would this ever NOT apply to a task of this type?"* → If always applies, it's not a scenario/risk — move to Defaults (process) or Quality Gates (verifiable).
+- *"Can you verify this from the output alone?"* → If yes, it's a Quality Gate, not a Default. Defaults are for non-verifiable process practices.
+- *"Does the probe have only one valid answer?"* → If yes, it shouldn't be probed. Move to Defaults or Quality Gates.
+- *No item should appear in multiple content types.* If a selectable gate and a Default say the same thing, one must go — the contradiction confuses `/define` (auto-include vs probe).
 
 **When creating/modifying task files**:
-1. Read existing task files for structural patterns (PROMPTING.md is the richest example)
+1. Read existing task files for structural patterns (BUG.md and WRITING.md show the Defaults pattern)
 2. Update the domain guidance table in `skills/define/SKILL.md` (add row, update Composition paragraph)
 3. If creating a base file, update overlay files to remove content that moved to the base
 4. Bump plugin version, update READMEs per sync checklist

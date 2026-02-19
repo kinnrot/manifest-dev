@@ -10,9 +10,19 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 
 **LLMs cannot find their own errors but CAN correct them when pointed out** — This error-detection asymmetry is the empirical justification for multi-agent adversarial verification. Independent agents checking each other's work is structurally correct.
 
-**Multi-agent research yields 90.2% improvement over single-agent** — For multi-facet research, delegate orthogonal sub-topics to parallel web-researcher sub-agents (each gets assigned AND excluded scope). Main agent decomposes, coordinates, and synthesizes — never researches directly. Probe for process guidance: agent delegation strategy, convergence criteria, adversarial verification depth.
+**Multi-agent research yields 90.2% improvement over single-agent** — For multi-facet research, delegate orthogonal sub-topics to parallel source-type-appropriate sub-agents (each gets assigned AND excluded scope). Main agent decomposes, coordinates, and synthesizes — never researches directly. Probe for process guidance: agent delegation strategy, convergence criteria, adversarial verification depth. See applicable source files for source-specific agent recommendations.
 
 **Ecological rationality boundary** — Simple heuristics outperform formal frameworks in well-structured environments (Gigerenzer). Formal rigor adds value in novel, uncertain, multi-source synthesis — which is the target use case for deep research. Match rigor to task complexity.
+
+## Data Sources
+
+Research tasks may span multiple data sources. Each source type has its own credibility model, failure modes, and retrieval techniques. Probe for which sources are relevant; load source-specific guidance files when available.
+
+| Source Type | Indicators | Source File | Probe |
+|-------------|------------|-------------|-------|
+| **Web** | Public information, published sources, external research | `sources/SOURCE_WEB.md` | Does this task require searching the public web, published articles, documentation, or external sources? |
+
+When no source file exists for a relevant source type, the general quality gates below still apply — the LLM probes source-specific failure cases adaptively using the abstract principles.
 
 ## Quality Gates
 
@@ -20,12 +30,12 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 
 **Source Rigor**
 - **Source credibility** — Key findings backed by credible, identifiable sources, weighted by authority level and claim stakes. Higher-stakes claims demand higher-authority sources. When relying below the level the claim demands, flag it
-- **Source authority hierarchy** — Primary sources (official docs, specs, peer-reviewed research) over secondary (established publications, reputable analysis) over tertiary (blogs, forums, outdated material). Claims on tertiary alone are unsubstantiated unless no higher-authority source exists (flagged as gap)
+- **Source authority assessment** — Source authority assessed per source type — each data source has its own credibility hierarchy. Higher-stakes claims demand higher-authority sources within the relevant source type. See source files for source-type-specific hierarchies (e.g., `SOURCE_WEB.md` for web primary/secondary/tertiary)
 - **Cross-referencing** — Key claims corroborated across independent sources, depth proportional to claim importance. Independence means different organizations, methodologies, and data sources — not multiple citations of the same upstream source
 - **Evidence traceability** — Key claims traceable to specific sources; the chain from raw evidence to conclusion is walkable
-- **Search coverage** — Simple keyword searches miss 60-72% of relevant content. Multiple semantically distinct query formulations used per research facet, not single-query passes
-- **Lateral reading** — Sources underpinning key claims evaluated by external reputation (what do independent authorities say about this source?), not just by content. Vertical evaluation (assessing a source by its own self-presentation) is insufficient — 71% improvement in unreliable source detection when using lateral reading (RCT, n=499)
-- **Citation verification** — Cited sources verified to exist and actually support the claims attributed to them. Citation fabrication rates of 6-29% even in frontier models, inversely correlated with topic familiarity — niche topics demand more aggressive checking
+- **Source coverage** — Coverage verified across the source's retrieval mechanisms — single-pass queries risk missing relevant content. See source files for source-type-specific search techniques (e.g., `SOURCE_WEB.md` for web search depth)
+- **External reputation assessment** — Source reputation assessed externally — what do independent parties say about this source? — not just by the source's own self-presentation. See source files for source-type-specific evaluation techniques (e.g., `SOURCE_WEB.md` for lateral reading)
+- **Citation verification** — Cited sources verified to exist and actually support the claims attributed to them. AI agents fabricate citations; verification intensity should scale with topic obscurity and claim stakes. See source files for source-type-specific fabrication rates
 - **Anti-cherry-picking** — Sources meeting inclusion criteria (relevant topic, adequate authority) never excluded solely because findings contradict the emerging narrative. Contradictory sources engaged — either by incorporating contrary evidence or documenting why the source's methodology is flawed
 
 **Intellectual Rigor**
@@ -73,14 +83,6 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 | Actionability | Output enables a decision or next step without further research |
 | Follow-up anticipation | Report preempts the reader's likely next questions rather than leaving obvious gaps |
 
-#### Search Depth
-
-| Aspect | Threshold |
-|--------|-----------|
-| Iterative reformulation | Queries reformulated based on initial results — terminology from found sources seeds follow-up searches (pearl growing finds ~51% of references in systematic reviews) |
-| Vocabulary expansion | Synonym variants, alternative phrasings, and domain-specific terminology used — vocabulary mismatch between queries and content is a fundamental recall barrier |
-| Phase-matched strategy | Broader queries during exploration (maximize recall), narrower during focused investigation (maximize precision) |
-
 #### Evidence Assessment
 
 | Aspect | Threshold |
@@ -97,31 +99,23 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 | Linchpin analysis | Claims whose failure would collapse most conclusions identified and targeted for strongest verification effort |
 | Outside view | Reference class identified — "how often do claims of this sort hold?" applied after initial conclusions to counter anchoring and base rate neglect |
 
-#### AI Robustness
-
-| Aspect | Threshold |
-|--------|-----------|
-| Sycophancy-aware framing | Research framing avoids implying expected findings — "research the relationship between X and Y, including evidence X does NOT improve Y" rather than "research how X improves Y." AI agents align findings with perceived expectations |
-| Niche-topic vigilance | Research on niche or obscure topics flagged for enhanced verification — citation fabrication rates 28-29% for niche vs 6% for well-known topics |
-| Parallel verification preference | Multiple agents independently checking the same claims preferred over serial chains where each builds on the last — addresses error propagation and error-detection asymmetry |
-
 ## Risks
 
 - **Source bias** — all sources from same perspective; probe: what viewpoints might disagree?
 - **Confirmation bias** — only finding evidence supporting initial hypothesis, including biased search terms; probe: what searches would you run if you believed the *opposite* conclusion?
-- **Authority inflation** — source treated as more authoritative than it is (blog cited like peer review, vendor marketing cited like independent analysis); probe: is each source's authority level honestly assessed?
+- **Authority inflation** — source treated as more authoritative than warranted by its provenance and methodology; probe: is each source's authority level honestly assessed? See source files for source-type-specific authority inflation patterns
 - **Recency gap** — topic evolved since sources published; probe: how fast-moving is this topic?
 - **Premature convergence** — stopped at first satisfying answer without testing deeper/adjacent threads; probe: what would another round of curiosity-driven exploration reveal?
 - **Single-frame blindness** — entire investigation through one lens (e.g., only technical, only economic); probe: what frames haven't been applied?
 - **Shallow depth as breadth** — many sources cited but no claim investigated deeply; probe: for the most important claim, can you trace the full evidence chain?
 - **Survivorship bias** — only successful cases visible; failed adoptions and quiet abandonments are undocumented; probe: what would the failures look like?
-- **Citation fabrication** — AI generates plausible-sounding but non-existent sources, especially for niche topics (6-29% fabrication rates); probe: have cited sources been independently verified to exist and support the attributed claims?
+- **Citation fabrication** — AI generates plausible-sounding but non-existent sources, especially for less-documented areas; probe: have cited sources been independently verified to exist and support the attributed claims? See source files for source-type-specific fabrication rates
 - **Sycophancy alignment** — research framing implies expected findings, causing AI agents to confirm rather than investigate; probe: could the research question be read as suggesting its own answer?
-- **Search result bias** — SEO manipulation and algorithmic ranking treated as a proxy for source authority; probe: are we relying on search rank position to determine quality?
+- **Discovery mechanism bias** — the method used to find sources introduces its own ranking or filtering that may not correlate with source quality; probe: are we conflating discoverability with authority? See source files for source-type-specific discovery biases
 - **Authority mimicry** — confident, authoritative style without factual grounding; probe: does the source's tone match its evidence quality, or is it performing authority?
 - **Anti-Bayesian drift** — AI agents become MORE confident rather than less when encountering counter-evidence; probe: did confidence appropriately decrease where counter-evidence surfaced?
 - **Circular citation** — multiple sources appearing independent but tracing to a single origin, creating false corroboration; probe: do corroborating sources have genuinely independent upstream origins?
-- **AI-content pollution** — lateral reading or cross-referencing undermined when corroborating sources are themselves AI-generated; probe: are corroborating sources genuinely independent human-authored content?
+- **Corroboration pollution** — corroboration undermined when sources used for cross-referencing are themselves unreliable or synthetic; probe: are corroborating sources genuinely independent and trustworthy? See source files for source-type-specific pollution patterns
 - **Error propagation** — errors compound exponentially across multi-step synthesis pipelines; probe: how many inferential steps between raw evidence and final conclusion? Are steps parallel or serial?
 - **False precision** — uncertainty ranges or caveats stripped during synthesis, making tentative findings sound definitive; probe: where did we lose nuance between raw findings and conclusions?
 
@@ -138,12 +132,7 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 - **Shelf life unknown** — findings delivered with no indication of temporal validity; probe: when should we re-evaluate?
 - **Correlation treated as causation** — observed correlation presented as causal; probe: what alternative explanations exist?
 - **Recommendation risk unexamined** — recommended option's failure modes and reversal cost not analyzed; probe: what if this recommendation fails? How hard to reverse?
-- **Niche-topic fabrication** — AI-generated claims for obscure topics far less reliable than for well-known ones (28-29% vs 6% fabrication); probe: is this topic niche enough that enhanced verification is warranted?
-- **Performative rigor** — checklist compliance without substance; probe: do quality measures reflect genuine quality, or just the appearance of process?
-- **Forced false consensus** — open questions resolved as if factual, premature convergence into a single position when genuine uncertainty exists; probe: are we forcing agreement where disagreement is the honest finding?
-- **Over-hedging** — adversarial rounds push toward excessive qualification and underconfidence, watering down well-supported conclusions; probe: has adversarial review made the research more accurate, or just less decisive?
 - **Context missing** — findings are generic, not grounded in specific constraints; probe: does this apply to our situation?
-- **Single-agent tunnel vision** — research done by one agent without parallel sub-agents misses content due to query path dependence and recall gaps (60-72%); probe: does this task have multiple facets that would benefit from parallel web-researcher sub-agents?
 
 ## Trade-offs
 
@@ -157,3 +146,17 @@ Investigations, analyses, comparisons, technology evaluations. Default posture: 
 - Structural interventions vs awareness instructions — process rules that force behavior over instructions to "be aware of bias"
 - Parallel verification vs serial processing — parallel catches more errors but costs more; serial compounds errors but is cheaper
 - Evidence sufficiency scaling — routine claims need 1-2 authoritative sources; contested/high-stakes claims need 3+ independent lines from different methodological traditions
+
+## Defaults
+
+*Domain best practices for this task type.*
+
+- **Multi-agent delegation** — For multi-facet research, delegate orthogonal sub-topics to parallel source-type-appropriate sub-agents (each gets assigned AND excluded scope). Main agent decomposes, coordinates, and synthesizes — never researches directly
+- **Parallel verification over serial** — Multiple agents independently checking the same claims, not serial chains where each builds on the last. Serial compounds errors exponentially; parallel catches more
+- **Sycophancy-aware framing** — Frame research questions to avoid implying expected findings. Include explicit counter-hypothesis: "research X, including evidence X does NOT hold"
+- **Rigor-task fit** — Formal rigor for novel, uncertain, or multi-source synthesis. Simpler heuristics for well-structured, single-source tasks. Match process weight to actual uncertainty
+- **Structural interventions over awareness** — Process rules that force behavior (required sections, structured output, separation of concerns) over instructions to "be aware of bias"
+- **Niche-topic vigilance** — Enhanced verification for less-documented topics where AI fabrication rates are higher. See source files for source-type-specific rates
+- **Genuine quality over performative rigor** — Quality measures must reflect genuine quality, not checklist compliance. Process without substance is worse than no process
+- **Preserve genuine disagreement** — Open questions stay open. Don't force false consensus when genuine uncertainty exists. Disagreement is a valid finding
+- **Calibrated confidence** — Don't water down well-supported conclusions through excessive hedging. Adversarial review should make research more accurate, not less decisive

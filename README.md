@@ -278,7 +278,7 @@ Hooks enforce workflow integrity—the AI can't skip steps:
 | **Writing** | `tasks/WRITING.md` | Prose quality, AI tells, vocabulary, anti-patterns, craft fundamentals (base for Blog, Document) |
 | **Document** | `tasks/DOCUMENT.md` + `WRITING.md` | Structure completeness, consistency |
 | **Blog** | `tasks/BLOG.md` + `WRITING.md` | Engagement, SEO |
-| **Research** | `tasks/RESEARCH.md` | Evidence-backed research criteria across source rigor, intellectual rigor, AI robustness. Reference material in `tasks/references/research/` |
+| **Research** | `tasks/research/RESEARCH.md` + source files | Source-agnostic research methodology (rigor, evidence, multi-agent). Source-specific guidance in `tasks/research/sources/` (e.g., `SOURCE_WEB.md`). Reference material in `tasks/references/research/` |
 
 ## Workflow Diagram
 

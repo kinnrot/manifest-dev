@@ -8,6 +8,8 @@ Specs, proposals, reports, formal documentation. Composes with WRITING.md (base 
 |--------|-------|-----------|
 | Structure completeness | general-purpose | All required sections present |
 | Consistency | general-purpose | Terminology and style uniform throughout |
+| External consistency | general-purpose | No contradictions with other existing documentation |
+| Scope clarity | general-purpose | What's covered and what's not stated explicitly |
 
 ## Risks
 
@@ -19,16 +21,14 @@ Specs, proposals, reports, formal documentation. Composes with WRITING.md (base 
 
 - **Stale on arrival** - accurate when written, outdated by publication; probe: how fast does this domain change?
 - **Missing stakeholder concern** - answers wrong questions; probe: what will stakeholders look for?
-- **Contradicts other docs** - conflicts with existing documentation; probe: related docs that need alignment?
 - **No clear next steps** - reader finishes, doesn't know what to do; probe: what action follows reading?
-- **Terminology mismatch** - uses terms differently than codebase/team; probe: glossary needed? terms defined?
 - **Approval ambiguity** - unclear who signs off; probe: approval process? required reviewers?
 - **Maintenance orphan** - no owner to update when things change; probe: who maintains this?
 - **Format mismatch** - wrong format for consumption context; probe: where is this read? how?
-- **Scope ambiguity** - unclear what's covered vs not; probe: explicit scope boundaries?
 
 ## Trade-offs
 
 - Comprehensive vs readable
 - Formal vs accessible
 - Detail vs brevity
+

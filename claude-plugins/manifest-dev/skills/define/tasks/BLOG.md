@@ -8,6 +8,9 @@ Blog posts, articles, tutorials, newsletters. Composes with WRITING.md (base for
 |--------|-------|-----------|
 | Engagement | general-purpose | Opening hook, maintained interest, clear CTA |
 | SEO | general-purpose | Title, meta, keywords, headings optimized (if SEO matters) |
+| Title-content alignment | general-purpose | Title promises match content delivery |
+| Visual structure | general-purpose | Headers, whitespace, formatting for scannability; no walls of text |
+| Clear takeaway | general-purpose | Reader finishes with one memorable thing |
 
 ## Risks
 
@@ -18,10 +21,7 @@ Blog posts, articles, tutorials, newsletters. Composes with WRITING.md (base for
 
 - **Lost at transition** - hook works, reader bounces in middle; probe: does each section earn the next?
 - **Actionable clarity gap** - interesting but unclear what to do; probe: what should reader do after?
-- **Clickbait disappointment** - title promises more than content delivers; probe: does content match headline?
 - **Length mismatch** - too long/short for platform norms; probe: expected length? reading context?
-- **Wall of text** - no visual breaks, reader fatigues; probe: headers? images? whitespace?
-- **No clear takeaway** - reader finishes, nothing sticks; probe: what's the one thing to remember?
 - **Missing context for sharing** - content good, but no social hook; probe: what makes someone share this?
 - **CTA unclear** - reader convinced but doesn't know next step; probe: what's the call to action?
 - **Evergreen vs timely confusion** - mixing dated and lasting content; probe: shelf life? update plan?
@@ -32,3 +32,4 @@ Blog posts, articles, tutorials, newsletters. Composes with WRITING.md (base for
 - SEO vs natural flow
 - Opinionated vs balanced
 - Comprehensive vs scannable
+
