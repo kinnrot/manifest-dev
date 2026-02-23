@@ -26,7 +26,7 @@ Two commands. `/define` interviews you and builds a manifest. `/do` executes it.
 
 Instead of telling the AI *how* to build something, you tell it what you'd accept.
 
-Instead of "implement auth with JWT and bcrypt, use middleware pattern, store tokens in httpOnly cookies," you'd write "passwords never stored in plaintext (verify: grep for raw password assignment)" and "invalid credentials return 401, not 500." The AI figures out the implementation. Automated verification checks whether it hit the bar.
+Say you need a login page. The old way: "use React Hook Form, validate with Zod, show inline errors, disable the button while submitting." You've made every design decision upfront. The manifest way: "invalid credentials show an error without clearing the password field" and "the form can't be submitted twice." You define the bar. The AI picks how to clear it. Automated verification confirms it did.
 
 ## How It Works
 
